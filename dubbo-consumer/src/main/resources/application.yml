@@ -1,0 +1,28 @@
+#服务调用方
+
+server:
+  port:  7777
+
+spring:
+  dubbo:
+    application:
+      name: dubbo-consumer
+    base-package: com.sky.blog.consumer  # dubbo服务调用者所在的包
+    registry:
+      address: 127.0.0.1                   # zookeeper注册中心的地址
+      port: 2181                           # zookeeper注册中心的端口
+    protocol:
+      name: dubbo
+      port: 20880
+    consumer:
+      timeout: 1000
+      check: true                          # 服务启动时检查被调用服务是否可用
+      retries: 2                           # 服务调用重试次数
+
+  activemq:
+      broker-url: tcp://localhost:61616
+      in-memory: true
+      pool:
+        enabled: false
+
+
